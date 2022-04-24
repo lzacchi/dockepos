@@ -5,8 +5,6 @@ WORKDIR /home
 ENV TZ=America/Sao_Paulo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ
 
-# pikaur -S bc bin86 base-devel gdb gdb-multiarch
-
 RUN apt-get update && \
     apt-get install -y \
     autoconf \
