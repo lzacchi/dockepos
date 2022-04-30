@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
 WORKDIR /home
 
@@ -22,6 +22,7 @@ RUN apt-get update && \
     gdb-multiarch \
     gperf \
     g++-multilib \
+    konsole \
     libexpat-dev \
     libgmp-dev \
     libmpc-dev \
