@@ -42,6 +42,7 @@ RUN apt-get update && \
     tar \
     tcsh \
     texinfo \
+    unzip \
     wget \
     xterm \
     zlib1g-dev && \
@@ -69,6 +70,13 @@ RUN wget -q -O rv32.tar.gz https://www.dropbox.com/s/t7oiniijgq74a32/riscv.tar.g
     mkdir -p /usr/local/rv32/ && \
     mv rv32/* /usr/local/rv32/ && \
     rm -r rv32.tar.gz
+
+RUN wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=16vQ7nO10FW1HVltXecGYr44Rqkb5gQcS' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=16vQ7nO10FW1HVltXecGYr44Rqkb5gQcS" -O rv64.zip && \
+    rm -rf /tmp/cookies.txt && \
+    unzip rv64.zip -d rv64 && \
+    mkdir -p /usr/local/rv64/ && \
+    mv rv64/* /usr/local/rv64/ && \
+    rm -r rv64.zip
 
 ENV PATH="${PATH}:/usr/local/arm/gcc-7.2.0/bin/"
 
